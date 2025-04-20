@@ -9,4 +9,4 @@ BEGIN
 	JOIN qtrinhmuon AS qtm ON qtm.ma_docgia = nl.ma_docgia
 	WHERE qtm.ngay_tra IS NULL
         AND DATEDIFF(DAY, qtm.ngay_muon, GETDATE()) > 14
-END
+END;

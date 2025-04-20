@@ -25,8 +25,8 @@ BEGIN
 		END
 	END
 	-- Nếu Mã độc giả không tồn tại
-	-- Thông báo 
+	-- Thông báo
 	BEGIN
 		PRINT N'Độc giả này không tồn tại trong danh sách!'
 	END
-END
+END;
