@@ -6,7 +6,6 @@ BEGIN
 	SELECT *
     FROM docgia AS dg
 	JOIN nguoilon AS nl ON nl.ma_docgia = dg.ma_docgia
-	JOIN qtrinhmuon AS qtm ON qtm.ma_docgia = nl.ma_docgia
-	WHERE qtm.ngay_tra IS NULL
-        AND DATEDIFF(DAY, qtm.ngay_muon, GETDATE()) > 14
+	JOIN muon AS m ON m.ma_docgia = nl.ma_docgia
+	WHERE m.ngay_hethan < GETDATE()
 END;

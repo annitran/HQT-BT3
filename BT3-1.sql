@@ -3,11 +3,11 @@ CREATE PROCEDURE sp_ThongtinDocGia
 AS
 BEGIN
 	-- Kiểm tra Mã độc giả này có tồn tại không
-	IF EXISTS (SELECT * FROM docgia dg WHERE dg.ma_docgia = @Ma_Docgia)
+	IF EXISTS (SELECT 1 FROM docgia dg WHERE dg.ma_docgia = @Ma_Docgia)
 	-- Nếu Mã độc giả tồn tại:
 	-- Kiểm tra độc giả này thuộc loại người lớn hay trẻ em
 	BEGIN
-		IF EXISTS (SELECT * FROM nguoilon AS nl WHERE nl.ma_docgia = @Ma_Docgia)
+		IF EXISTS (SELECT 1 FROM nguoilon AS nl WHERE nl.ma_docgia = @Ma_Docgia)
 		-- Nếu là người lớn thì:
 		-- In các thông tin liên quan đến độc giả này, gồm: thông tin độc giả + thông tin người lớn
 		BEGIN
@@ -26,6 +26,7 @@ BEGIN
 	END
 	-- Nếu Mã độc giả không tồn tại
 	-- Thông báo
+	ELSE
 	BEGIN
 		PRINT N'Độc giả này không tồn tại trong danh sách!'
 	END
